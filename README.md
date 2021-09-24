@@ -1,5 +1,13 @@
-[![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=anuraghazra)](https://github.com/anuraghazra/github-readme-stats)
 
+
+
+[![hahaxiaowai's github stats](https://github-readme-stats.vercel.app/api?username=hahaxiaowai&theme=dark&show_icons=true)](https://github.com/anuraghazra/github-readme-stats)
+
+
+[![hahaxiaowai's github language](https://github-readme-stats.vercel.app/api/top-langs/?username=hahaxiaowai&layout=compact&hide=html&theme=dark)](https://github.com/anuraghazra/github-readme-stats)
+
+
+<!-- [![hahaxiaowai's github contribution](https://github-readme-streak-stats.herokuapp.com/?user=hahaxiaowai&theme=highcontrast)](https://github.com/anuraghazra/github-readme-stats) -->
 
 <!--
 **hahaxiaowai/hahaxiaowai** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
