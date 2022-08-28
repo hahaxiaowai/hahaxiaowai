@@ -1,6 +1,6 @@
 
 
-## Hi,Welcome~
+## Hi,Welcome~ This is [my blog](https://hahaxiaowai.github.io/)
 
 [![hahaxiaowai's github stats](https://github-readme-stats.vercel.app/api?username=hahaxiaowai&theme=dark&show_icons=tru)](https://github.com/anuraghazra/github-readme-stats)
 
