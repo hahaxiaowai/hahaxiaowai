@@ -1,0 +1,43 @@
+name: Update README stats images
+
+on:
+  schedule:
+    # Daily at 00:10 UTC
+    - cron: "10 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-readme-stats
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch latest SVGs
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets
+
+          curl -fsSL --retry 3 --retry-all-errors --max-time 60 \
+            -H 'Accept: image/svg+xml' \
+            'https://github-readme-stats.vercel.app/api?username=hahaxiaowai&theme=dark&show_icons=true&count_private=true' \
+            -o assets/github-stats.svg
+
+          curl -fsSL --retry 3 --retry-all-errors --max-time 60 \
+            -H 'Accept: image/svg+xml' \
+            'https://github-readme-stats.vercel.app/api/top-langs/?username=hahaxiaowai&layout=compact&theme=dark' \
+            -o assets/top-langs.svg
+
+      - name: Commit changes (if any)
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update README stats images"
+          file_pattern: "assets/*.svg"
