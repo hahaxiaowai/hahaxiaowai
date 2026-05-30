@@ -22,6 +22,9 @@ jobs:
 
       - name: Fetch latest SVGs
         shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_OWNER: ${{ github.repository_owner }}
         run: |
           set -euo pipefail
           mkdir -p assets
@@ -32,9 +35,110 @@ jobs:
             -o assets/github-stats.svg
 
           curl -fsSL --retry 3 --retry-all-errors --max-time 60 \
-            -H 'Accept: image/svg+xml' \
-            'https://github-readme-stats.vercel.app/api/top-langs/?username=hahaxiaowai&layout=compact&theme=dark' \
-            -o assets/top-langs.svg
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/users/${REPO_OWNER}/repos?per_page=100&sort=pushed" \
+            -o /tmp/repos.json
+
+          python3 - <<'PY'
+          from __future__ import annotations
+
+          import html
+          import json
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          WIDTH = 495
+          PADDING_X = 18
+          PADDING_Y = 18
+          HEADER_HEIGHT = 28
+          ROW_HEIGHT = 20
+          DESC_HEIGHT = 16
+          MAX_REPOS = 5
+
+          def esc(text: str) -> str:
+              return html.escape(text, quote=False)
+
+          def clamp(text: str, max_len: int) -> str:
+              if len(text) <= max_len:
+                  return text
+              return text[: max_len - 1].rstrip() + "…"
+
+          def fmt_date(iso: str | None) -> str:
+              if not iso:
+                  return ""
+              # Keep stable: only date portion.
+              return iso[:10]
+
+          repos_path = Path("/tmp/repos.json")
+          repos = json.loads(repos_path.read_text(encoding="utf-8"))
+
+          filtered = [
+              r
+              for r in repos
+              if not r.get("fork")
+              and not r.get("archived")
+              and not r.get("disabled")
+              and (r.get("name") or "").strip()
+          ]
+          filtered.sort(key=lambda r: r.get("pushed_at") or "", reverse=True)
+          top = filtered[:MAX_REPOS]
+
+          now = datetime.now(tz=timezone.utc).strftime("%Y-%m-%d")
+
+          lines: list[tuple[str, str]] = []
+          if not top:
+              lines.append(("暂无数据", "未获取到项目列表"))
+          else:
+              for idx, repo in enumerate(top, start=1):
+                  name = str(repo.get("name") or "").strip()
+                  language = str(repo.get("language") or "").strip()
+                  pushed = fmt_date(repo.get("pushed_at"))
+                  desc = str(repo.get("description") or "").strip()
+
+                  meta_parts = [p for p in [language, pushed] if p]
+                  meta = " · ".join(meta_parts)
+                  title = f"{idx}. {name}"
+                  if meta:
+                      title = f"{title}  ({meta})"
+
+                  lines.append((clamp(title, 52), clamp(desc or "—", 70)))
+
+          height = PADDING_Y * 2 + HEADER_HEIGHT + len(lines) * (ROW_HEIGHT + DESC_HEIGHT)
+
+          y = PADDING_Y + 22
+          header = "最近在做的项目排行"
+
+          svg_parts: list[str] = []
+          svg_parts.append(
+              f'<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{height}" viewBox="0 0 {WIDTH} {height}">'
+          )
+          svg_parts.append(
+              '<defs><style>'
+              '.bg{fill:#151515;stroke:#30363d;stroke-width:1;}'
+              '.h{font:700 16px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#c9d1d9;}'
+              '.t{font:600 12px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#c9d1d9;}'
+              '.d{font:400 11px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#8b949e;}'
+              '.s{font:400 10px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#6e7681;}'
+              '</style></defs>'
+          )
+          svg_parts.append(f'<rect class="bg" x="0.5" y="0.5" rx="10" ry="10" width="{WIDTH-1}" height="{height-1}"/>')
+
+          svg_parts.append(f'<text class="h" x="{PADDING_X}" y="{y}">{esc(header)}</text>')
+          svg_parts.append(f'<text class="s" x="{WIDTH - PADDING_X}" y="{y}" text-anchor="end">{now}</text>')
+
+          y += HEADER_HEIGHT
+          for title, desc in lines:
+              svg_parts.append(f'<text class="t" x="{PADDING_X}" y="{y}">{esc(title)}</text>')
+              y += ROW_HEIGHT
+              svg_parts.append(f'<text class="d" x="{PADDING_X}" y="{y}">{esc(desc)}</text>')
+              y += DESC_HEIGHT
+
+          svg_parts.append("</svg>")
+
+          Path("assets/recent-projects.svg").write_text("\n".join(svg_parts) + "\n", encoding="utf-8")
+          PY
 
       - name: Commit changes (if any)
         uses: stefanzweifel/git-auto-commit-action@v5
