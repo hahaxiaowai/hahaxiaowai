@@ -2,9 +2,9 @@
 
 ## Hi,Welcome~ This is [my blog](https://blog.nighttea.space/)
 
-[![hahaxiaowai's github stats](https://github-readme-stats.vercel.app/api?username=hahaxiaowai&theme=dark&show_icons=true&count_private=true)](https://github.com/anuraghazra/github-readme-stats)
+[![hahaxiaowai's github stats](./assets/github-stats.svg)](https://github.com/anuraghazra/github-readme-stats)
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=hahaxiaowai&layout=compact&theme=dark)](https://github.com/anuraghazra/github-readme-stats)
+[![Top Langs](./assets/top-langs.svg)](https://github.com/anuraghazra/github-readme-stats)
 
 <!-- [![hahaxiaowai's github language](https://github-readme-stats.vercel.app/api/top-langs/?username=hahaxiaowai&layout=compact&hide=html&theme=dark)](https://github.com/anuraghazra/github-readme-stats) -->
 
