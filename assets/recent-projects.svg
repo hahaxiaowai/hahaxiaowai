@@ -1,14 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="495" height="140" viewBox="0 0 495 140">
-  <defs>
-    <style>
-      .bg{fill:#151515;stroke:#30363d;stroke-width:1;}
-      .h{font:700 16px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#c9d1d9;}
-      .t{font:400 12px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#8b949e;}
-    </style>
-  </defs>
-  <rect class="bg" x="0.5" y="0.5" rx="10" ry="10" width="494" height="139"/>
-  <text class="h" x="18" y="40">最近在做的项目排行</text>
-  <text class="t" x="18" y="70">该卡片由 GitHub Actions 定时生成。</text>
-  <text class="t" x="18" y="92">如果显示为空或未更新，请手动运行 workflow: “Update README stats images”。</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="495" height="244" viewBox="0 0 495 244">
+<defs><style>.bg{fill:#151515;stroke:#30363d;stroke-width:1;}.h{font:700 16px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#c9d1d9;}.t{font:600 12px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#c9d1d9;}.d{font:400 11px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#8b949e;}.s{font:400 10px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#6e7681;}</style></defs>
+<rect class="bg" x="0.5" y="0.5" rx="10" ry="10" width="494" height="243"/>
+<text class="h" x="18" y="40">最近在做的项目排行</text>
+<text class="s" x="477" y="40" text-anchor="end">2026-06-10</text>
+<text class="t" x="18" y="68">1. story-studio  (TypeScript · 2026-06-09)</text>
+<text class="d" x="18" y="88">—</text>
+<text class="t" x="18" y="104">2. vitepress-tree-hole  (Vue · 2026-05-31)</text>
+<text class="d" x="18" y="124">vitepress theme</text>
+<text class="t" x="18" y="140">3. hahaxiaowai  (2026-05-30)</text>
+<text class="d" x="18" y="160">personal page</text>
+<text class="t" x="18" y="176">4. sakura-fall  (TypeScript · 2026-05-30)</text>
+<text class="d" x="18" y="196">—</text>
+<text class="t" x="18" y="212">5. hahaxiaowai.github.io  (HTML · 2026-05-30)</text>
+<text class="d" x="18" y="232">个人博客</text>
 </svg>
-
