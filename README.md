@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- Header Banner -->
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=180&section=header&text=Hi%20there%20👋%20I'm%20hahaxiaowai&fontSize=36&fontColor=fff&animation=fadeIn&fontAlignY=32&desc=Welcome%20to%20my%20GitHub%20Profile!&descSize=16&descAlignY=52&descColor=fff" alt="header"/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=180&section=header&text=Hi%20there%20👋%20I'm%20hahaxiaowai&fontSize=36&fontColor=fff&animation=fadeIn&fontAlignY=32&desc=Welcome%20to%20my%20GitHub%20Profile!&descSize=16&descAlignY=52&descColor=fff" alt="Animated welcome banner with waving gradient background"/>
 
 </div>
 
@@ -10,7 +10,7 @@
 
 > 🔗 This is [my blog](https://blog.nighttea.space/)
 
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%" alt="Animated rainbow divider">
 
 <!-- GitHub Stats -->
 ### 📊 GitHub Stats
@@ -21,7 +21,7 @@
 
 </div>
 
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%" alt="Animated rainbow divider">
 
 <!-- Recent Projects -->
 ### 🚀 Recent Projects
@@ -32,7 +32,7 @@
 
 </div>
 
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%" alt="Animated rainbow divider">
 
 <!-- Contribution Snake -->
 ### 🐍 Contribution Snake
@@ -50,6 +50,6 @@
 <!-- Footer -->
 <div align="center">
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=120&section=footer" alt="footer"/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=120&section=footer" alt="Animated footer with waving gradient background"/>
 
 </div>
