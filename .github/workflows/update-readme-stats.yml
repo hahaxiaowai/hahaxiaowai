@@ -25,13 +25,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO_OWNER: ${{ github.repository_owner }}
+          STATS_BASE: ${{ vars.STATS_API_URL || 'github-readme-stats.vercel.app' }}
         run: |
           set -euo pipefail
           mkdir -p assets
 
           curl -fsSL --retry 3 --retry-all-errors --max-time 60 \
             -H 'Accept: image/svg+xml' \
-            'https://github-readme-stats.vercel.app/api?username=hahaxiaowai&theme=dark&show_icons=true&count_private=true' \
+            "https://${STATS_BASE}/api?username=hahaxiaowai&theme=dark&show_icons=true&count_private=true" \
             -o assets/github-stats.svg
 
           curl -fsSL --retry 3 --retry-all-errors --max-time 60 \
