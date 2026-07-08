@@ -20,26 +20,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Fetch latest SVGs
+      - name: Generate stats card
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: stats
+          options: username=${{ github.repository_owner }}&theme=dark&show_icons=true&count_private=true
+          path: assets/github-stats.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate recent projects SVG
         shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO_OWNER: ${{ github.repository_owner }}
         run: |
-          set -uo pipefail
+          set -euo pipefail
           mkdir -p assets
-
-          # Try custom deployment first, fall back to public instance
-          if ! curl -fsSL --retry 3 --retry-all-errors --max-time 60 \
-            -H 'Accept: image/svg+xml' \
-            'https://github-readme-stats-hahaxiaowais-projects.vercel.app/api?username=hahaxiaowai&theme=dark&show_icons=true&count_private=true' \
-            -o assets/github-stats.svg; then
-            echo "::warning::Custom Vercel deployment failed, trying public instance..."
-            curl -fsSL --retry 3 --retry-all-errors --max-time 60 \
-              -H 'Accept: image/svg+xml' \
-              'https://github-readme-stats.vercel.app/api?username=hahaxiaowai&theme=dark&show_icons=true&count_private=true' \
-              -o assets/github-stats.svg || echo "::warning::GitHub stats fetch failed, keeping existing SVG"
-          fi
 
           curl -fsSL --retry 3 --retry-all-errors --max-time 60 \
             -H "Accept: application/vnd.github+json" \
