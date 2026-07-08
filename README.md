@@ -6,9 +6,9 @@
 </div>
 
 <!-- About Me -->
-### ☕ About Me
+<!--### ☕ About Me >
 
-> 🔗 This is [my blog](https://blog.nighttea.space/)
+<!--  🔗 This is [my blog](https://blog.nighttea.space/) >
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%" alt="Animated rainbow divider">
 
