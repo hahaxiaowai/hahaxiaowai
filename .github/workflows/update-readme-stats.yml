@@ -31,7 +31,7 @@ jobs:
 
           curl -fsSL --retry 3 --retry-all-errors --max-time 60 \
             -H 'Accept: image/svg+xml' \
-            'https://github-readme-stats.vercel.app/api?username=hahaxiaowai&theme=dark&show_icons=true&count_private=true' \
+            'https://github-readme-stats-hahaxiaowais-projects.vercel.app/api?username=hahaxiaowai&theme=dark&show_icons=true&count_private=true' \
             -o assets/github-stats.svg
 
           curl -fsSL --retry 3 --retry-all-errors --max-time 60 \
